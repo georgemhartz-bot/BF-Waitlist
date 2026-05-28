@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dating Waitlist</title>
+
+<style>
+:root{
+--pink:#f7d8e8;
+--card:#fff7fb;
+--red:#a3262a;
+--mid:#b53f7a;
+--chop:#72506f;
+--ink:#231723;
+}
+
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Georgia,"Times New Roman",serif;
+background:var(--pink);
+color:var(--ink);
+display:flex;
+justify-content:center;
+padding:22px;
+min-height:100vh;
+}
+
+main{width:min(430px,100%);}
+
+.card{
+background:var(--card);
+padding:28px 24px;
+border-radius:22px;
+margin:18px 0;
+box-shadow:0 8px 20px rgba(80,30,60,.12);
+text-align:center;
+}
+
+h1{text-align:center;font-size:35px;margin:10px 0 24px;}
+h2{font-size:29px;margin:20px 0 16px;}
+p,li{font-size:17px;line-height:1.45;}
+
+ul{
+text-align:left;
+display:inline-block;
+padding-left:22px;
+margin:0 auto 8px;
+}
+
+.tag{
+display:inline-block;
+padding:9px 24px;
+border-radius:999px;
+font-size:14px;
+font-weight:bold;
+letter-spacing:1px;
+color:white;
+}
+
+.premium{background:var(--red);}
+.mid{background:var(--mid);}
+.chopped{background:var(--chop);}
+
+button,a.button{
+display:inline-block;
+padding:15px 28px;
+border-radius:999px;
+border:none;
+text-decoration:none;
+color:white;
+font-weight:bold;
+font-size:18px;
+font-family:inherit;
+margin-top:14px;
+cursor:pointer;
+}
+
+.btn-red{background:var(--red);}
+.btn-mid{background:var(--mid);}
+.btn-chop{background:var(--chop);}
+
+.linkBtn{
+background:transparent;
+color:var(--ink);
+text-decoration:underline;
+font-size:14px;
+padding:8px;
+}
+
+.hidden{display:none;}
+</style>
+</head>
+
+<body>
+<main>
+
+<section id="home">
+<h1>Dating Waitlist</h1>
+
+<div class="card">
+<span class="tag premium">ELITE</span>
+<h2>Premium Qualifications</h2>
+
+<ul>
+<li>Emotionally available</li>
+<li>Texts back</li>
+<li>Over 6 foot or under 5’6</li>
+<li>Knows the difference between “your” and “you’re”</li>
+</ul>
+
+<button class="btn-red" data-screen="premiumScreen">Place Application</button>
+</div>
+
+<div class="card">
+<span class="tag mid">STANDARD</span>
+<h2>Mid Qualifications</h2>
+
+<ul>
+<li>Cute enough to cause problems but still under review</li>
+<li>Can grill a steak</li>
+<li>Treats pets like little roommates</li>
+<li>Over 6’5 or under 5’7</li>
+</ul>
+
+<button class="btn-mid" data-screen="midScreen">Place Application</button>
+</div>
+
+<div class="card">
+<span class="tag chopped">CONSOLATION</span>
+<h2>Chopped Qualifications</h2>
+
+<ul>
+<li>Shorter than 5’4</li>
+<li>Taller than 6’7</li>
+<li>Thinks “wyd” is a love language</li>
+<li>Took a step back like your hairline</li>
+<li>Lives for mixed signals</li>
+<li>Has the audacity to speak over me</li>
+</ul>
+
+<button class="btn-chop" data-screen="choppedWarning">Place Application</button>
+</div>
+</section>
+
+<section id="premiumScreen" class="card hidden">
+<span class="tag premium">APPLICATION REVIEW</span>
+
+<h2>Application Pending Placement</h2>
+
+<p>
+Your Premium application has not yet been submitted.
+</p>
+
+<p>
+If you proceed, your application will officially be placed in front of the review committee for emotional evaluation, texting consistency verification, and overall vibe assessment.
+</p>
+
+<a class="button btn-red" href="https://forms.gle/66c3e8gatueiAvjc7" target="_blank">Next</a>
+<br>
+<button class="linkBtn backBtn">← Back</button>
+</section>
+
+<section id="midScreen" class="card hidden">
+<span class="tag mid">APPLICATION REVIEW</span>
+
+<h2>Further Evaluation Required</h2>
+
+<p>
+Your Mid application is currently awaiting placement.
+</p>
+
+<p>
+Proceeding will submit your application to upper management and possibly the group chat for further review regarding steak grilling abilities and problem-causing potential.
+</p>
+
+<a class="button btn-mid" href="https://forms.gle/uMMfGo65uTZdC9ji8" target="_blank">Next</a>
+<br>
+<button class="linkBtn backBtn">← Back</button>
+</section>
+
+<section id="choppedWarning" class="card hidden">
+<span class="tag chopped">WARNING</span>
+
+<h2>Proceed With Caution</h2>
+
+<p>
+For how chopped your application appears to be, the following link may or may not work for you.
+</p>
+
+<button class="btn-chop" data-screen="choppedFinal">Next</button>
+<br>
+<button class="linkBtn backBtn">← Back</button>
+</section>
+
+<section id="choppedFinal" class="card hidden">
+<span class="tag chopped">APPLICATION STATUS</span>
+
+<h2>Try again later.</h2>
+
+<p>
+Based on your selection, it is unlikely you’ll hear back.
+</p>
+
+<p>
+You can also try my CashApp:
+<strong>@ghartz55</strong>
+</p>
+
+<button class="btn-chop backBtn">← Back</button>
+</section>
+
+</main>
+
+<script>
+(function(){
+function hideAll(){
+[
+"home",
+"premiumScreen",
+"midScreen",
+"choppedWarning",
+"choppedFinal"
+].forEach(function(id){
+document.getElementById(id).classList.add("hidden");
+});
+}
+
+function showScreen(id){
+hideAll();
+document.getElementById(id).classList.remove("hidden");
+window.scrollTo(0,0);
+}
+
+function goHome(){
+hideAll();
+document.getElementById("home").classList.remove("hidden");
+window.scrollTo(0,0);
+}
+
+document.querySelectorAll("[data-screen]").forEach(function(btn){
+btn.addEventListener("click",function(){
+showScreen(btn.getAttribute("data-screen"));
+});
+});
+
+document.querySelectorAll(".backBtn").forEach(function(btn){
+btn.addEventListener("click",goHome);
+});
+})();
+</script>
+
+</body>
+</html>
